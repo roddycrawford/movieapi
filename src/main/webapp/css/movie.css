@@ -1,0 +1,65 @@
+@CHARSET "ISO-8859-1";
+
+body {
+	background-color: whitesmoke;
+}
+
+.navbar, .jumbotron {
+	background-color:#004880;
+	color:white;
+}
+
+.jumbotron {
+	margin-top:50px;
+	margin-bottom:25px;
+}
+
+.navbar li a, .navbar .navbar-brand {
+    color: white !important;
+}
+ 
+.navbar-nav li a:hover, .navbar-nav li.active a {
+    color: #004880 !important;
+    background-color: white !important;
+}
+  
+.navbar-default .navbar-toggle {
+    border-color: transparent !important;
+    color: white !important;
+}
+
+#mypic {
+	max-width: 200px;
+	height: auto;
+	float: right
+}
+
+.table-info-row  {
+	background-color: white;
+}
+
+#damgoodeLogo {
+	max-width: 150px;
+	height: auto;
+	float: left;
+}
+
+
+.bg-dgp-gray {
+	background-color: #e4e4e3;
+}
+
+.table-small {
+	width: 50%;
+}
+
+.section-header {
+	color: #004880;
+}
+
+.status {
+	background-color: green;
+	color: black; 
+	text-align: left;
+	font-size: 18px;
+}

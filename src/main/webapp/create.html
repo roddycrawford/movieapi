@@ -1,0 +1,68 @@
+<div class="container">
+	<form name="createForm">
+		<div>
+			<h5>Press 'Save' to save new movie.</h5>
+			<h5>Press 'Clear' to enter another movie.</h5>
+			
+			<div class="header">
+				<button type="button" ng-click="postMovie()" class="btn btn-success"
+					ng-disabled="!createForm.$valid || successfulInsert">
+					<span class="glyphicon glyphicon-floppy-disk"></span> Save New Movie
+				</button>
+				<button type="button" ng-click="clearMovie()" class="btn btn-primary">
+					<span class="glyphicon glyphicon-remove"></span> Clear
+				</button>
+			</div>
+			<br>
+			<table class="table table-bordered table-small">
+				<tr>
+					<td>
+						<div class="col-xs-12">
+							<label for="title">Title:</label>
+							<input id="title" type="text" class="form-control"
+								ng-model="newMovie.title" required />
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<div class="col-xs-12">
+							<label for="genre">Genre:</label>
+							<select id="genre" ng-options="value for value in genres" required
+								ng-model="newMovie.genre" class="form-control">
+							</select>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<div class="col-xs-12">
+							<label for="relaseYear">Release Year:</label>
+							<input type="number" min="1950" max="2020" name="releaseYear"
+								ng-model="newMovie.releaseYear" class="form-control" required>
+							<div>
+								<span class="text-danger"
+									ng-show="createForm.releaseYear.$error.required && createForm.$dirty">
+									Required!
+								</span>
+								<span class="text-danger"
+									ng-show="createForm.releaseYear.$touched && createForm.releaseYear.$error.min">
+									Must be a number greater than 1950.
+								</span>
+								<span class="text-danger"
+									ng-show="createForm.releaseYear.$touched && createForm.releaseYear.$error.max">
+									Must be a number less than 2020.
+								</span>
+							</div>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<p><span class="text-warning" ng-bind="createStatus"></span></p>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</form>
+</div>

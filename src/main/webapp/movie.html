@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>MovieAPI</title>
+<meta charset='utf-8'>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<!-- Load AngularJS -->
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+<!-- Load my Angular script file that has the module/controller -->
+<script src="js/movie.js"></script>
+<link rel="stylesheet" type="text/css" href="css/movie.css">
+<script src="https://kit.fontawesome.com/a0504be7a7.js"></script>
+
+</head>
+<body ng-app="movieapp" ng-controller="moviecontroller">
+	<nav class="navbar navbar-inverse navbar-static-top">
+		<div class="container-fluid">
+ 			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+					<span class="glyphicon glyphicon-menu-hamburger"></span>
+				</button>
+				<a class="navbar-brand" href="#">{{navName}}</a>
+			</div>
+
+			<div class="collapse navbar-collapse" id="myNavbar">
+				<ul class="nav navbar-nav">
+					<li><a href="#!search"><span class="glyphicon glyphicon-search"></span> Search</a></li>
+					<li><a href="#!create"><span class="glyphicon glyphicon-plus"></span> Create</a></li>
+					<li><a href="#!summary"><span class="glyphicon glyphicon-stats"></span> Summary</a></li>
+					<li><a href="#!stacks">Stacks</a></li>
+					<li><a href="#!finalproject">Final Project</a></li>
+					<li><a href='#!fancysearch'>Fancy Search</a></li>
+					<li><a href='#!notify'>Notify</a></li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="#!resume">Resume</a></li>
+				</ul>
+			</div>
+		</div>	
+	</nav>
+	
+	<div class="container-fluid">		
+		<div ng-view></div>
+	</div>
+		
+	
+		
+</body>
+</html>
+<!--  
+<div ng-app="movieapp" ng-controller="moviecontroller" class="container">
+		<h1 class="text-center">{{appName}}</h1>
+		
+		<div class="jumbotron well-sm text-center">
+			<p>
+				<span ng-bind="address"></span><br>
+				<span ng-bind="phone"></span><br>
+				<span ng-show="showEmail" ng-bind="email"></span>
+			
+			</p>
+		<br>
+		<button class="btn btn-info" ng-click="magicEmail()">Hide/Display Email</button>
+		
+		
+		
+		</div>
+	</div>
+	
+	-->

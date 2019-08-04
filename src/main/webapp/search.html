@@ -1,0 +1,131 @@
+<div class="container">
+	<h1 class="text-center">Movie Search</h1>
+
+	<div class="container">
+		<div ng-show="showSearch" ng-init="getMovies()">
+			<table class="table table-hover table-bordered text-center">
+				<tr class="success">
+					<td colspan="2">
+						<button type="button" ng-click="getMovies()" class="btn btn-success">
+							<span class="glyphicon glyphicon-refresh"></span>
+							 Refresh Movies
+						</button>
+					</td>
+					<td colspan="2">
+						<h4>Roddy's Movie Store</h4>
+					</td>
+					<td colspan="2">
+						<label for="movieSearch">Search:</label>
+						<input id="movieSearch" class="form-control" ng-model="movieSearch"
+							type="text" />
+					</td>
+				</tr>
+				<tr class='success'>
+					<th class="text-center col-sm-1">Id</th>
+					<th class="text-center col-sm-3">Title</th>
+					<th class="text-center col-sm-2">Genre</th>
+					<th class="text-center col-sm-2">Release Year</th>
+					<th class="text-center col-sm-2">Create Date</th>
+					<th class="text-center col-sm-2">Update Date</th>
+				</tr>
+				<tr class='table-info-row' ng-repeat="movie in movies | filter:movieSearch" 
+					ng-click="updateMovie(movie)">
+					<td class="col-sm-1">{{movie.movieId}}</td>
+					<td class="col-sm-3">{{movie.title}}</td>
+					<td class="col-sm-2">{{movie.genre}}</td>
+					<td class="col-sm-2">{{movie.releaseYear}}</td>
+					<td class="col-sm-2">{{movie.createDateTime | date : "short"}}</td>
+					<td class="col-sm-2">{{movie.lastUpdated | date : "short"}}</td>
+				</tr>
+				<tr>
+					<td colspan="6" class="success">
+						<h4>Select a Movie to update</h4>
+					</td>
+				</tr>
+
+			</table>
+		</div>
+
+
+
+		<form name="updateForm">
+			<div ng-show="showEditDelete">
+	
+				<h5>Press 'Update' to save movie changes.</h5>
+				<h5>Press 'Delete' to delete movie.</h5>
+				<h5>Press 'Cancel' to return to movie search.</h5>
+	
+				<div class="header">
+					<button type="button" ng-click="putMovie(movieToUpdate)" ng-disabled="isUpdateButtonDisabled" class="btn btn-success">
+						<span class="glyphicon glyphicon-edit"></span> Update
+					</button>
+					<button type="button" ng-click="deleteMovie(movieToUpdate)" ng-disabled="isDeleteButtonDisabled" class="btn btn-danger">
+						<span class="glyphicon glyphicon-trash"></span> Delete
+					</button>
+					<button type="button" ng-click="returnToSearch()" class="btn btn-warning">
+						Return to Search
+					</button>
+				</div>
+	
+				<br>
+				
+					<table class="table table-bordered table-small">
+						<tr>
+							<td>
+								<label for="movieId">ID:</label> 
+								<span id="movieId" ng-bind="movieToUpdate.movieId"></span>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<div class="form-group row">
+									<div class="col-xs-12">
+										<label for="title">Title:</label> 
+										<input class="form-control" id="title" type="text" 
+											ng-model="movieToUpdate.title" size=40 />
+									</div>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<div class="form-group row">
+									<div class="col-xs-12">
+										<label for="genre">Genre:</label> 
+										<select class="form-control" ng-options="value for value in genres" 
+											ng-model="movieToUpdate.genre"></select>
+									</div>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<div class="form-group row">
+									<div class="col-xs-12">
+										<label for="releaseYear">Release Year:</label>
+										<input type="number" min="1950" max="2020" name="releaseYear"
+											class="form-control" ng-model="movieToUpdate.releaseYear" required>
+									</div>
+								</div>
+								<div>
+									<span class="text-danger"
+										ng-show="updateForm.releaseYear.$error.required">
+										Required!
+									</span>
+									<span class="text-danger" ng-hide="updateForm.releaseYear.$valid">
+										Must be a number between 1950 and 2020
+									</span>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<p><span class="text-warning" ng-bind="updateStatus"></span></p>
+							</td>
+						</tr>
+					</table>
+				<br>
+			</div>	
+		</form>
+	</div>
+</div>

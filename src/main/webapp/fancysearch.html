@@ -1,0 +1,89 @@
+<div class="container">	
+	
+	<div class="row">
+		<div class="col-sm-3 header">			
+			
+				<button type="button" ng-click="getFancySearch()" 
+					class="btn btn-success"> 
+					Search
+				</button>
+				<button type="button" ng-click="clearFancySearch()" 
+					class="btn btn-success"> 
+					Clear
+				</button>											
+		</div>		
+	</div>	
+		<div class="row">
+			<div class="col-sm-3">			
+				<table  class="table table-condensed">
+				<tr>
+					<td>
+						<label> Language:</label><br>
+						<label><input type="checkbox" ng-model="fancysearch.english" />
+						 English:
+						</label>
+						<label><input type="checkbox" ng-model="fancysearch.french" />
+						 French:
+						</label><br />
+						<label><input type="checkbox" ng-model="fancysearch.german" />
+						 German:
+						</label>
+						<label><input type="checkbox" ng-model="fancysearch.spanish" />
+						 Spanish:
+						</label>
+					</td>
+				</tr>
+				<tr>							
+					<td>
+						<label>Film Type:</label><br>
+						<label>
+							<input type="radio" ng-model="fancysearch.media" value="color"/>
+							Color
+						</label><br/>
+						<label>
+							<input type="radio" ng-model="fancysearch.media" value="blackandwhite"/>
+							Black and White
+						</label><br/>
+						<label>
+							<input type="radio" ng-model="fancysearch.media" value="colorized"/>
+							Colorized
+						</label>
+							
+					 </td>
+				 </tr>
+					<tr>
+						<td>
+							<label>Release Date Range:</label><br/>
+							<label>Start:</label><br/>
+   								<input type="date" ng-model="fancysearch.startdate"
+       								placeholder="yyyy-MM-dd" min="1950-01-01" max="2018-12-31"/><br/>
+   							<label>End:</label><br/>
+   								<input type="date" ng-model="fancysearch.enddate"
+       								placeholder="yyyy-MM-dd" min="1950-01-01" max="2018-12-31"/>
+						</td>
+					</tr>				
+			</table>				
+		</div>	
+		
+		<div class="col-sm-9">			
+			<table  class="table table-condensed">
+				<tr class='text-success'>
+					<th class="text-center col-sm-2">Title</th>
+					<th class="text-center col-sm-2">Genre</th>
+					<th class="text-center col-sm-2">Release Year</th>
+					<th class="text-center col-sm-1">Id</th>
+					<th class="text-center col-sm-3">Description</th>					
+				</tr>
+				<tr ng-repeat="movie in searchResults">
+					<td class="col-sm-2">{{movie.title}}</td>
+					<td class="col-sm-2 text-center">{{movie.genre}}</td>
+					<td class="col-sm-2 text-center">{{movie.releaseYear}}</td>
+					<td class="col-sm-1 text-center">{{movie.movieId}}</td>
+					<td class="col-sm-3">{{movie.description}}</td>					
+				</tr>				
+			</table>				
+		</div>	
+							
+	</div>
+	
+</div>
